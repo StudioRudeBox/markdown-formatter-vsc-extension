@@ -38,6 +38,9 @@ suite('Extension Test Suite', () => {
     test('Strikethrough', () => testMarkdownCommand('markdown-shortcut.strikethrough', 'Hello', '~~Hello~~', 'should be strikethrough'));
     test('Hyperlink', () => testMarkdownCommand('markdown-shortcut.hyperlink', 'Hello', '[Hello](url)', 'should be a hyperlink'));
     test('Image', () => testMarkdownCommand('markdown-shortcut.image', 'Hello', '![Hello](url)', 'should be an image'));
+    test('Blockquote', () => testMarkdownCommand('markdown-shortcut.blockquote', 'Hello', '> Hello', 'should be a blockquote'));
+    test('Stack italic on bold', () => testMarkdownCommand('markdown-shortcut.italics', '**Hello**', '***Hello***', 'should add italic to bold'));
+    test('Stack bold on italic', () => testMarkdownCommand('markdown-shortcut.bold', '*Hello*', '***Hello***', 'should add bold to italic'));
 
     // toggle (remove) formatting
     test('Remove bold', () => testMarkdownCommand('markdown-shortcut.bold', '**Hello**', 'Hello', 'bold should be removed'));
@@ -47,4 +50,7 @@ suite('Extension Test Suite', () => {
     test('Remove strikethrough', () => testMarkdownCommand('markdown-shortcut.strikethrough', '~~Hello~~', 'Hello', 'strikethrough should be removed'));
     test('Remove hyperlink', () => testMarkdownCommand('markdown-shortcut.hyperlink', '[Hello](url)', 'Hello', 'hyperlink should be removed'));
     test('Remove image', () => testMarkdownCommand('markdown-shortcut.image', '![Hello](url)', 'Hello', 'image should be removed'));
+    test('Remove blockquote', () => testMarkdownCommand('markdown-shortcut.blockquote', '> Hello', 'Hello', 'blockquote should be removed'));
+    test('Unstack bold from bold+italic', () => testMarkdownCommand('markdown-shortcut.bold', '***Hello***', '*Hello*', 'should remove bold, leaving italic'));
+    test('Unstack italic from bold+italic', () => testMarkdownCommand('markdown-shortcut.italics', '***Hello***', '**Hello**', 'should remove italic, leaving bold'));
 });

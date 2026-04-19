@@ -9,6 +9,9 @@ build/
 .DS_Store
 *.vsix
 
+# TESTS
+.vscode-test/
+
 # CLAUDE
 .claude/
 CLAUDE.md

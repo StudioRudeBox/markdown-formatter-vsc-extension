@@ -1,5 +1,55 @@
 import * as vscode from 'vscode';
 
+function countLeadingAsterisks(text: string): number {
+    let i = 0;
+    while (i < text.length && text[i] === '*') i++;
+    return i;
+}
+
+function countTrailingAsterisks(text: string): number {
+    let i = text.length - 1;
+    let count = 0;
+    while (i >= 0 && text[i] === '*') { i--; count++; }
+    return count;
+}
+
+// bold (stars=2) and italic (stars=1) with stacking support
+function applyAsteriskFormat(editor: vscode.TextEditor, stars: number): void {
+    const marker = '*'.repeat(stars);
+    const selection = editor.selection;
+    let didInsert = false;
+
+    editor.edit(editBuilder => {
+        if (selection.isEmpty) {
+            const pos = selection.start;
+            const beforeRange = new vscode.Range(pos.translate(0, -stars), pos);
+            const afterRange = new vscode.Range(pos, pos.translate(0, stars));
+            if (editor.document.getText(beforeRange) === marker && editor.document.getText(afterRange) === marker) {
+                editBuilder.delete(beforeRange);
+                editBuilder.delete(afterRange);
+            } else {
+                editBuilder.insert(pos, marker + marker);
+                didInsert = true;
+            }
+        } else {
+            const text = editor.document.getText(selection);
+            const min = Math.min(countLeadingAsterisks(text), countTrailingAsterisks(text));
+            const isApplied = stars === 1 ? min % 2 === 1 : min >= stars;
+            if (isApplied) {
+                editBuilder.replace(selection, text.slice(stars, -stars));
+            } else {
+                editBuilder.replace(selection, marker + text + marker);
+                didInsert = true;
+            }
+        }
+    }).then(() => {
+        if (selection.isEmpty && didInsert) {
+            const newPos = selection.start.translate(0, stars);
+            editor.selection = new vscode.Selection(newPos, newPos);
+        }
+    });
+}
+
 // generic function for inline text replacement and cursor position adjustment
 function formatText(editor: vscode.TextEditor, before: string, after: string = before): void {
     const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -84,12 +134,12 @@ export function activate(context: vscode.ExtensionContext): void {
 
     const boldDisposable = vscode.commands.registerCommand('markdown-shortcut.bold', () => {
         const editor = vscode.window.activeTextEditor;
-        if (editor) { formatText(editor, '**'); }
+        if (editor) { applyAsteriskFormat(editor, 2); }
     });
 
     const italicsDisposable = vscode.commands.registerCommand('markdown-shortcut.italics', () => {
         const editor = vscode.window.activeTextEditor;
-        if (editor) { formatText(editor, '*'); }
+        if (editor) { applyAsteriskFormat(editor, 1); }
     });
 
     const underlineDisposable = vscode.commands.registerCommand('markdown-shortcut.underline', () => {
@@ -196,11 +246,46 @@ export function activate(context: vscode.ExtensionContext): void {
         })
     );
 
+    const blockquoteDisposable = vscode.commands.registerCommand('markdown-shortcut.blockquote', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            const document = editor.document;
+            const selection = editor.selection;
+            editor.edit(editBuilder => {
+                let allStartWithQuote = true;
+                for (let i = selection.start.line; i <= selection.end.line; i++) {
+                    if (!document.lineAt(i).text.startsWith('> ')) {
+                        allStartWithQuote = false;
+                        break;
+                    }
+                }
+                for (let i = selection.start.line; i <= selection.end.line; i++) {
+                    const line = document.lineAt(i);
+                    if (allStartWithQuote) {
+                        editBuilder.delete(new vscode.Range(line.range.start, line.range.start.translate(0, 2)));
+                    } else {
+                        editBuilder.insert(line.range.start, '> ');
+                    }
+                }
+            });
+        }
+    });
+
+    const horizontalRuleDisposable = vscode.commands.registerCommand('markdown-shortcut.horizontalRule', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            editor.edit(editBuilder => {
+                editBuilder.insert(editor.selection.active, '\n---\n');
+            });
+        }
+    });
+
     context.subscriptions.push(
         boldDisposable, italicsDisposable, underlineDisposable, codeDisposable,
         commentDisposable, hyperlinkDisposable, imageDisposable, inlineMathDisposable,
         strikethroughDisposable, unorderedListDisposable, sortedListDisposable,
-        ...headingDisposables
+        ...headingDisposables,
+        blockquoteDisposable, horizontalRuleDisposable
     );
 }
 

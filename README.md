@@ -17,10 +17,17 @@ Keyboard shortcuts and formatting commands for Markdown editing in VS Code.
 | `Ctrl+-` | `Cmd+-` | Unordered list |
 | `Ctrl+=` | `Cmd+=` | Ordered list |
 | `Ctrl+Alt+1–6` | `Cmd+Alt+1–6` | Heading 1–6 |
+| `Ctrl+Shift+.` | `Cmd+Shift+.` | Blockquote |
+| — | — | Horizontal rule (command palette) |
 
-All shortcuts toggle: applying the same shortcut to already-formatted text removes the formatting.
+All shortcuts toggle: applying the same shortcut to already-formatted text removes the formatting. Bold and italic stack: applying italic to bold text (or vice versa) produces `***bold italic***`, and each can be removed independently.
 
-## Install from VSIX
+## Install
+
+**From the VS Code Marketplace** (recommended):
+Search for `markdown-formatter-vsc-extension` in the Extensions panel, or [install from the Marketplace](https://marketplace.visualstudio.com/items?itemName=studiorudebox.markdown-formatter-vsc-extension).
+
+**From VSIX:**
 
 1. Download the `.vsix` file from `build/`
 2. In VS Code: `Extensions` → `...` → `Install from VSIX…`
@@ -28,7 +35,7 @@ All shortcuts toggle: applying the same shortcut to already-formatted text remov
 
 Or via terminal:
 ```bash
-code --install-extension build/markdown-formatter-vsc-extension-1.0.0.vsix
+code --install-extension build/markdown-formatter-vsc-extension-1.1.0.vsix
 ```
 
 ## Development
