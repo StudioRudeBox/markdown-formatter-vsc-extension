@@ -12,3 +12,6 @@ build/
 # CLAUDE
 .claude/
 CLAUDE.md
+
+# release notes (local only, paste into GitHub release UI)
+RELEASE.md
