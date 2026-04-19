@@ -1,0 +1,225 @@
+{
+  "name": "markdown-formatter-vsc-extension",
+  "displayName": "VSC Markdown Formatter",
+  "description": "Keyboard shortcuts and formatting tools for Markdown editing in VS Code",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "publisher": "studiorudebox",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StudioRudeBox/markdown-formatter-vsc-extension.git"
+  },
+  "categories": [
+    "Keymaps",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "markdown-shortcut.bold",
+        "mac": "cmd+b",
+        "win": "ctrl+b",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Make selected text bold in Markdown"
+      },
+      {
+        "command": "markdown-shortcut.italics",
+        "mac": "cmd+i",
+        "win": "ctrl+i",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Add italic formatting to selected text in Markdown"
+      },
+      {
+        "command": "markdown-shortcut.underline",
+        "mac": "cmd+u",
+        "win": "ctrl+u",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Add underline formatting to selected text in Markdown"
+      },
+      {
+        "command": "markdown-shortcut.code",
+        "mac": "ctrl+`",
+        "win": "ctrl+`",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Format selected text as inline code in Markdown"
+      },
+      {
+        "mac": "cmd+k",
+        "win": "ctrl+k",
+        "command": "markdown-shortcut.hyperlink",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Wrap selected text with Markdown hyperlink syntax"
+      },
+      {
+        "mac": "ctrl+cmd+i",
+        "win": "ctrl+alt+i",
+        "command": "markdown-shortcut.image",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Insert image syntax in Markdown"
+      },
+      {
+        "mac": "ctrl+m",
+        "win": "ctrl+m",
+        "command": "markdown-shortcut.inlineMath",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Insert inline math syntax in Markdown"
+      },
+      {
+        "mac": "ctrl+shift+`",
+        "win": "ctrl+shift+`",
+        "command": "markdown-shortcut.strikethrough",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Strike through selected text in Markdown"
+      },
+      {
+        "mac": "cmd+-",
+        "win": "ctrl+-",
+        "command": "markdown-shortcut.unorderedList",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Turn a paragraph into an unordered list."
+      },
+      {
+        "mac": "cmd+=",
+        "win": "ctrl+=",
+        "command": "markdown-shortcut.sortedList",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Turn a paragraph into an sorted list."
+      },
+      {
+        "command": "markdown-shortcut.heading1",
+        "mac": "cmd+alt+1",
+        "win": "ctrl+alt+1",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 1 (H1) to current line"
+      },
+      {
+        "command": "markdown-shortcut.heading2",
+        "mac": "cmd+alt+2",
+        "win": "ctrl+alt+2",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 2 (H2) to current line"
+      },
+      {
+        "command": "markdown-shortcut.heading3",
+        "mac": "cmd+alt+3",
+        "win": "ctrl+alt+3",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 3 (H3) to current line"
+      },
+      {
+        "command": "markdown-shortcut.heading4",
+        "mac": "cmd+alt+4",
+        "win": "ctrl+alt+4",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 4 (H4) to current line"
+      },
+      {
+        "command": "markdown-shortcut.heading5",
+        "mac": "cmd+alt+5",
+        "win": "ctrl+alt+5",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 5 (H5) to current line"
+      },
+      {
+        "command": "markdown-shortcut.heading6",
+        "mac": "cmd+alt+6",
+        "win": "ctrl+alt+6",
+        "when": "editorTextFocus && editorLangId == markdown",
+        "description": "Apply Heading 6 (H6) to current line"
+      }
+    ],
+    "commands": [
+      {
+        "command": "markdown-shortcut.bold",
+        "title": "Bold Text"
+      },
+      {
+        "command": "markdown-shortcut.italics",
+        "title": "Italic Text"
+      },
+      {
+        "command": "markdown-shortcut.underline",
+        "title": "Underline Text"
+      },
+      {
+        "command": "markdown-shortcut.code",
+        "title": "Inline Code"
+      },
+      {
+        "command": "markdown-shortcut.comment",
+        "title": "Insert Comment"
+      },
+      {
+        "command": "markdown-shortcut.hyperlink",
+        "title": "Insert Hyperlink"
+      },
+      {
+        "command": "markdown-shortcut.image",
+        "title": "Insert Image"
+      },
+      {
+        "command": "markdown-shortcut.inlineMath",
+        "title": "Inline Math Formula"
+      },
+      {
+        "command": "markdown-shortcut.strikethrough",
+        "title": "Strikethrough Text"
+      },
+      {
+        "command": "markdown-shortcut.unorderedList",
+        "title": "Turn a paragraph into an unordered list."
+      },
+      {
+        "command": "markdown-shortcut.sortedList",
+        "title": "Turn a paragraph into an sorted list."
+      },
+      {
+        "command": "markdown-shortcut.heading1",
+        "title": "Heading 1"
+      },
+      {
+        "command": "markdown-shortcut.heading2",
+        "title": "Heading 2"
+      },
+      {
+        "command": "markdown-shortcut.heading3",
+        "title": "Heading 3"
+      },
+      {
+        "command": "markdown-shortcut.heading4",
+        "title": "Heading 4"
+      },
+      {
+        "command": "markdown-shortcut.heading5",
+        "title": "Heading 5"
+      },
+      {
+        "command": "markdown-shortcut.heading6",
+        "title": "Heading 6"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "node scripts/compile.js",
+    "compile": "node scripts/compile.js",
+    "watch": "node scripts/compile.js --watch",
+    "pretest": "node scripts/compile.js",
+    "test": "node scripts/test.js",
+    "package": "node scripts/package.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.9.1",
+    "typescript": "^5.8.0"
+  }
+}

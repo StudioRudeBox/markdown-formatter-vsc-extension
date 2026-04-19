@@ -1,0 +1,14 @@
+# GENERAL
+node_modules/
+out/
+.env
+.env.local
+dist/
+build/
+*.log
+.DS_Store
+*.vsix
+
+# CLAUDE
+.claude/
+CLAUDE.md

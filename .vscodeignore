@@ -1,0 +1,11 @@
+.claude/
+.gitignore
+.vscode-test.mjs
+.vscodeignore
+CLAUDE.md
+tsconfig.json
+scripts/
+src/
+out/test/
+images/vsc-markdown-formatter.png
+node_modules/
