@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.1] - 2026-04-22
+
+### Changed
+- Updated extension icon
+
 ## [1.1.0] - 2026-04-19
 
 ### Changed

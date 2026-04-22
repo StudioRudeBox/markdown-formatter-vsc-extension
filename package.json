@@ -2,7 +2,7 @@
   "name": "markdown-formatter-vsc-extension",
   "displayName": "VSC Markdown Formatter",
   "description": "Keyboard shortcuts and formatting tools for Markdown editing in VS Code",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
