@@ -1,6 +1,7 @@
 # GENERAL
 node_modules/
 out/
+.assets/
 .env
 .env.local
 dist/
