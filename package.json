@@ -2,7 +2,7 @@
   "name": "markdown-formatter-vsc-extension",
   "displayName": "VSC Markdown Formatter",
   "description": "Keyboard shortcuts and formatting tools for Markdown editing in VS Code",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
@@ -71,8 +71,8 @@
         "description": "Insert inline math syntax in Markdown"
       },
       {
-        "mac": "ctrl+shift+`",
-        "win": "ctrl+shift+`",
+        "mac": "ctrl+cmd+s",
+        "win": "ctrl+alt+s",
         "command": "markdown-shortcut.strikethrough",
         "when": "editorTextFocus && editorLangId == markdown",
         "description": "Strike through selected text in Markdown"
@@ -222,11 +222,12 @@
   },
   "scripts": {
     "vscode:prepublish": "node scripts/compile.js",
+    "build": "node scripts/build.js",
     "compile": "node scripts/compile.js",
     "watch": "node scripts/compile.js --watch",
     "pretest": "node scripts/compile.js",
     "test": "node scripts/test.js",
-    "package": "node scripts/package.js"
+    "package": "node scripts/build.js"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

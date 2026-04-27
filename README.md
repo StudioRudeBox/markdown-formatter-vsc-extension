@@ -13,7 +13,7 @@ Keyboard shortcuts and formatting commands for Markdown editing in VS Code.
 | `Ctrl+K` | `Cmd+K` | Hyperlink |
 | `Ctrl+Alt+I` | `Ctrl+Cmd+I` | Image |
 | `Ctrl+M` | `Ctrl+M` | Inline math |
-| `` Ctrl+Shift+` `` | `` Ctrl+Shift+` `` | Strikethrough |
+| `Ctrl+Alt+S` | `Ctrl+Cmd+S` | Strikethrough |
 | `Ctrl+-` | `Cmd+-` | Unordered list |
 | `Ctrl+=` | `Cmd+=` | Ordered list |
 | `Ctrl+Alt+1–6` | `Cmd+Alt+1–6` | Heading 1–6 |
@@ -35,18 +35,19 @@ Search for `markdown-formatter-vsc-extension` in the Extensions panel, or [insta
 
 Or via terminal:
 ```bash
-code --install-extension build/markdown-formatter-vsc-extension-1.1.0.vsix
+code --install-extension build/markdown-formatter-vsc-extension-1.1.2.vsix
 ```
 
 ## Development
 
 ```bash
 npm install           # install dependencies
+npm run build         # compile TypeScript and build the .vsix
 npm run compile       # compile TypeScript
 npm run watch         # watch and recompile on change
 npm test              # run tests
-npm run package       # build .vsix into build/
+npm run package       # alias for npm run build
 ```
 
-> **Note:** `npm run package` uses `scripts/package.js` instead of calling `vsce` directly.
+> **Note:** `npm run build` uses `scripts/build.js` instead of calling `vsce` directly.
 > This works around a Windows limitation where `&` in the project path breaks npm script shell resolution.

@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.2] - 2026-04-27
+
+### Changed
+- Changed the strikethrough shortcut to `Ctrl+Alt+S` on Windows and `Ctrl+Cmd+S` on macOS to avoid the VS Code terminal shortcut conflict
+
 ## [1.1.1] - 2026-04-22
 
 ### Changed
